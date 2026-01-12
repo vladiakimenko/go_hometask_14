@@ -155,7 +155,7 @@ func TestRedirect(t *testing.T) {
 				router.ServeHTTP(recorder, request)
 				result := recorder.Result()
 				defer result.Body.Close()
-				success := result.StatusCode == http.StatusBadRequest
+				success := result.StatusCode < http.StatusBadRequest
 
 				validateHeaders(t, result)
 
